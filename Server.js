@@ -6,10 +6,16 @@ require("dotenv").config()
 //MongoDB Compass Connection
 const dburl = process.env.mongodburl
 mongoose.connect(dburl).then(() => {
-    console.log("Connected to DB Successfully")
+    console.log("Connected to MongoDB Atlas Successfully")
 }).catch((err) => {
     console.log(err.message)
 });
+
+// mongoose.connect(dburl).then(() => {
+//     console.log("Connected to DB Successfully")
+// }).catch((err) => {
+//     console.log(err.message)
+// });
 
 
 const app = express() 
