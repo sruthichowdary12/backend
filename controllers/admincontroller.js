@@ -232,13 +232,14 @@ const addstudent = async (request, response) => {
       const input = request.body;
       const course = new Course(input);
       await course.save();
-      response.send('Added Successfully');
+      response.send('Registered Successfully');
     } 
     catch(e) 
     {
       response.status(500).send(e.message);
     }
   };
+
 
   const changeadminpwd = async (request, response) => {
     try 
@@ -286,20 +287,8 @@ const analysis = async (req, res) => {
   }
 };
 
-const uploadCourse = async (req, res) => {
-  try {
-      if (!req.file) {
-          return res.status(400).json({ error: 'No file uploaded' });
-      }
-
-      const jsonArray = await csvtojson().fromString(req.file.buffer.toString());
-      await Course.insertMany(jsonArray);
-      res.json({ message: "CSV File Upload Successfully" });
-  } catch (error) {
-      res.status(500).json({ error: error.message });
-  }
-};
 
 
 
-  module.exports = {viewFacultyById,viewStudentById,uploadCourse,viewcourses,deletecourse,addcourse,addstudent,viewstudents,deletestudent,checkadminlogin,addfaculty,viewfaculties,deletefaculty,changeadminpwd,analysis,viewCourseById}
+
+  module.exports = {viewFacultyById,viewStudentById,viewcourses,deletecourse,addcourse,addstudent,viewstudents,deletestudent,checkadminlogin,addfaculty,viewfaculties,deletefaculty,changeadminpwd,analysis,viewCourseById}

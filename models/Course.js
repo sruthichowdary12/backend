@@ -13,10 +13,7 @@ const subjectschema = new mongoose.Schema({
       type: String,
       required: true
     },
-    file: {
-    type: String, //URL
-    required: true,
-  },
+    
   });
 
 const student = mongoose.model('subject', subjectschema);
